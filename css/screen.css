@@ -85,13 +85,6 @@
     /*  = 72px */
 }
 
-@media (prefers-color-scheme: dark) {
-    :root{
-        --global-input-color: var(var(--global-color-neutral-050));
-
-    }
-}
-
 /*---------------------------------------/*
  # GENERIC
 /*---------------------------------------*/
@@ -128,6 +121,33 @@ html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    --global-page-color: var(--global-color-neutral-950);
+    --global-page-backgroundColor: var(--global-color-neutral-050);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root{
+        --global-page-color: White;
+        --global-page-backgroundColor: var(--global-color-neutral-950);
+    }
+
+    .c-logo {
+        --logo__path--1--fill: White;
+        --logo__path--2--fill: var(--logo__path--1--fill);
+        --logo__path--3--fill: var(--logo__path--1--fill);
+    }
+
+    .c-card{
+        --global-cardColor: var(--global-color-neutral-900);
+    }
+}
+
+html{
+    color: var(--global-page-color); 
+    background-color: var(--global-color-neutral-950);
 }
 
 /*
@@ -495,16 +515,16 @@ input::placeholder {
 }
 
 .c-logo__path--1 {
-    fill: var(--global-color-neutral-950);
-}
-
-.c-logo__path--2 {
-    fill: var(--global-color-primary-500);
-}
-
-.c-logo__path--3 {
-    fill: var(--global-color-primary-700);
-}
+    fill: var(--logo__path--1--fill, var(--global-color-neutral-950));
+  }
+  
+  .c-logo__path--2 {
+    fill: var(--logo__path--2--fill, var(--global-color-primary-500));
+  }
+  
+  .c-logo__path--3 {
+    fill: var(--logo__path--3--fill, var(--global-color-alpha-primary-700));
+  }
 
 /*
     Component: Card
@@ -513,7 +533,7 @@ input::placeholder {
 */
 
 .c-card {
-    background-color: White;
+    background-color: (var(--global-cardColor), white);
     margin-bottom: var(--global-whitespace);
     border-radius: var(--global-borderRadius);
     box-shadow: 0 0 0 var(--global-borderWidth) rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, .075);
