@@ -3,15 +3,15 @@
 \*------------------------------------*/
 
 @font-face {
-    font-family: "Inter Web";
+    font-family: 'Inter Web';
     font-weight: 400;
-    src: url("../fonts/Inter-Regular.woff2") format("woff2")
+    src: url('../fonts/Inter-Regular.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: "Inter Web";
+    font-family: 'Inter Web';
     font-weight: 600;
-    src: url("../fonts/Inter-SemiBold.woff2") format("woff2")
+    src: url('../fonts/Inter-SemiBold.woff2') format('woff2');
 }
 
 /*---------------------------------------/*
@@ -28,11 +28,12 @@
     --global-color-primary-400: hsl(var(--global-color-primary-h) 100% 65%);
     --global-color-primary-600: hsl(var(--global-color-primary-h) 80% 55%);
     --global-color-primary-700: hsl(var(--global-color-primary-h) 65% 35%);
-    --global-color-primary-500-alpha-75: hsl(var(--global-color-primary-500-hsl) / .75);
-    --global-color-primary-500-alpha-30: hsl(var(--global-color-primary-500-hsl) / .3);
+    --global-color-primary-500-alpha-75: hsl(var(--global-color-primary-500-hsl) / 0.75);
+    --global-color-primary-500-alpha-30: hsl(var(--global-color-primary-500-hsl) / 0.3);
+    --global-color-shadow: rgba(0, 0, 0, .16);
 
-    --global-color-neutral-050: #F5F6FA;
-    --global-color-neutral-100: #E2E3E7;
+    --global-color-neutral-050: #f5f6fa;
+    --global-color-neutral-100: #e2e3e7;
     --global-color-neutral-200: #caccd4;
     --global-color-neutral-300: #b5b6c0;
     --global-color-neutral-400: #a0a1ad;
@@ -43,31 +44,27 @@
     --global-color-neutral-900: #35374d;
     --global-color-neutral-950: #20223a;
 
-     /* border stuff */
-     --global-borderRadius: 3px;
-     --global-borderWidth: 1px;
-     --global-borderWidth-s: 1px;
-     --global-borderWidth-m: 3px;
-
-    /* global input variables */
-    --global-input-borderWidth: var(--global-borderWidth);
-    --global-input-backgroundColor: White;
     --global-input-color: var(--global-color-neutral-950);
+    --global-input-background: white;
     --global-input-borderColor: var(--global-color-neutral-100);
     --global-input-hover-borderColor: var(--global-color-neutral-200);
-    --global-input-focus-borderColor: var(--global-color-neutral-500);
-
-    --global-input-focus-boxColor: var(--global-color-neutral-100);
+    --global-input-focus-borderColor: var(--global-color-primary-500);
     --global-input-focus-boxShadow: 0 0 0 3px var(--global-color-primary-500-alpha-30);
+    --global-input-toggle-background: var(--global-color-neutral-050);
+    --global-input-toggle-ballColor: white;
+    --global-input-toggle-ballShadow: 0 1px 3px var(--global-color-shadow);
 
-    --global-input-transition: opacity 0.2s ease-in-out;
-
+    /* border stuff */
+    --global-borderRadius: 3px;
+    --global-borderWidth: 1px;
+    --global-borderColor: var(--global-color-neutral-100);
 
     /* transitions */
-    --global-transitionTiming-alpha: .1s ease-out;
+    --global-transitionTiming-alpha: 0.1s ease-out;
+    --global-transition-2-ease: .2s ease;
 
     /* Baseline settings */
-    --global-baseline: .5rem;
+    --global-baseline: 0.5rem;
     --global-whitespace: calc(var(--global-baseline) * 3);
     /* = 24px */
 
@@ -83,6 +80,42 @@
     /*  = 48px */
     --global-whitespace-xxl: calc(var(--global-whitespace) * 3);
     /*  = 72px */
+
+    /*page colors*/
+    --global-page-backgroundColor: var(--global-color-neutral-050);
+    --global-page-color: var(--global-color-neutral-950);
+    --global-card-backgroundColor: white;
+
+    /*label colors*/
+    --global-label-color: var(--global-color-neutral-800);
+
+    /*toggle color*/
+    --global-toggle-color: var(--global-color-primary-500);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --global-page-color: White;
+        --global-page-backgroundColor: var(--global-color-neutral-950);
+        --global-input-color: var(--global-color-neutral-050);
+        --global-input-background: var(--global-color-neutral-950);
+        --global-input-borderColor: var(--global-color-neutral-900);
+        --global-card-backgroundColor: var(--global-color-neutral-900);
+    }
+    .c-logo {
+        --logo__path--1--fill: White;
+        --logo__path--2--fill: var(--logo__path--1--fill);
+        --logo__path--3--fill: var(--logo__path--1--fill);
+    }
+    .c-label{
+        --global-label-color: var(--global-color-neutral-300);
+    }
+    .c-card__footer{
+        --global-borderColor: var(--global-color-neutral-950); 
+    }
+    .c-password-toggle__symbol{
+        --global-toggle-color: var(--global-color-neutral-700);
+    }
 }
 
 /*---------------------------------------/*
@@ -115,39 +148,12 @@ img {
 
 html {
     line-height: 1.5;
-    font-family: "Inter Web", Helvetica, arial, sans-serif;
-    color: var(--global-color-neutral-950);
-    background-color: var(--global-color-neutral-050);
+    font-family: 'Inter Web', Helvetica, arial, sans-serif;
+    color: var(--global-page-color);
+    background-color: var(--global-page-backgroundColor);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-:root {
-    --global-page-color: var(--global-color-neutral-950);
-    --global-page-backgroundColor: var(--global-color-neutral-050);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root{
-        --global-page-color: White;
-        --global-page-backgroundColor: var(--global-color-neutral-950);
-    }
-
-    .c-logo {
-        --logo__path--1--fill: White;
-        --logo__path--2--fill: var(--logo__path--1--fill);
-        --logo__path--3--fill: var(--logo__path--1--fill);
-    }
-
-    .c-card{
-        --global-cardColor: var(--global-color-neutral-900);
-    }
-}
-
-html{
-    color: var(--global-page-color); 
-    background-color: var(--global-color-neutral-950);
 }
 
 /*
@@ -235,7 +241,7 @@ blockquote * {
 
 figcaption {
     font-weight: 400;
-    font-size: .75rem;
+    font-size: 0.75rem;
     line-height: calc(var(--global-baseline) * 2);
     margin-top: var(--global-whitespace-xxs);
 }
@@ -248,7 +254,7 @@ hr {
 }
 
 a {
-
+    text-decoration: none;
     &,
     &:visited {
         transition: all var(--global-transitionTiming-alpha);
@@ -266,7 +272,6 @@ a {
     &:active {
         color: var(--global-color-primary-600);
     }
-
 }
 
 label,
@@ -533,10 +538,10 @@ input::placeholder {
 */
 
 .c-card {
-    background-color: (var(--global-cardColor), white);
+    background-color: var(--global-card-backgroundColor);
     margin-bottom: var(--global-whitespace);
     border-radius: var(--global-borderRadius);
-    box-shadow: 0 0 0 var(--global-borderWidth) rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, .075);
+    box-shadow: 0 0 0 var(--global-borderWidth) rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.075);
     overflow: hidden;
 }
 
@@ -548,7 +553,7 @@ input::placeholder {
 
 .c-card__footer {
     text-align: center;
-    border-top: var(--global-borderWidth) solid var(--global-color-neutral-100);
+    border-top: var(--global-borderWidth) solid var(--global-borderColor);
 }
 
 .c-card__title {
@@ -599,10 +604,10 @@ input::placeholder {
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    border: var(--global-borderWidth) solid var(--global-color-neutral-100);
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
     border-radius: var(--global-borderRadius);
     color: var(--global-input-color);
-    background-color: var(--global-input-backgroundColor);
+    background-color: var(--global-input-background);
     font-family: inherit;
     font-size: 1rem;
     line-height: calc(var(--global-baseline) * 3);
@@ -611,12 +616,12 @@ input::placeholder {
     transition: border var(--global-transition-timing-alpha);
 
     &:hover {
-        border-color: var(--global-color-neutral-200);
+        border-color: var(--global-input-hover-borderColor);
     }
 
     &:focus,
     &:active {
-        border-color: var(--global-input-focus-boxColor);
+        border-color: var(--global-input-focus-borderColor);
         box-shadow: var(--global-input-focus-boxShadow);
     }
 }
@@ -635,10 +640,10 @@ input::placeholder {
 
 .c-label {
     margin-bottom: 0;
-    font-size: .875rem;
+    font-size: 0.875rem;
     padding-bottom: var(--global-whitespace-xs);
     line-height: calc(var(--global-baseline) * 2);
-    color: var(--global-color-neutral-800);
+    color: var(--global-label-color);
 }
 
 .c-label--option {
@@ -678,182 +683,186 @@ input::placeholder {
     }
 }
 
-.c-option--hidden:checked + .c-custom-option .c-custom-option__symbol{
-    opacity: 1;
-    transition: var(--global-input-transition);
+/* 
+    ---
+    * Component: CUSTOM CHECKBOXES AND RADIO BUTTONS
+    ---
+*/
+
+.c-option--hidden+.c-custom-option {
+    display: flex;
+    gap: 0.5rem;
+
+    & .c-custom-option__fake-input {
+        min-width: 1rem;
+        border: 1px solid var(--global-input-borderColor);
+        border-radius: var(--global-borderRadius);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: border var(--global-transition-2-ease);
+        background-color: var(--global-input-background);
+
+        & .c-custom-option__symbol {
+            opacity: 0;
+            max-width: 0.5rem;
+            fill: var(--global-color-primary-500);
+            transition: opacity var(--global-transition-2-ease);
+        }
+    }
+
+    & .c-custom-option__fake-input--radio {
+        border-radius: 100%;
+    }
+
+    &:hover {
+        & .c-custom-option__fake-input {
+            border-color: var(--global-input-hover-borderColor);
+        }
+    }
 }
 
-.c-custom-option{
-    display: flex;
+.c-option--hidden:checked+.c-custom-option {
+    & .c-custom-option__fake-input {
+        & .c-custom-option__symbol {
+            opacity: 100;
+            fill: var(--global-color-primary-500);
+        }
+    }
+
+    & .c-custom-option__fake-input--radio {
+        & .c-custom-option__symbol {
+            background-color: var(--global-color-primary-500);
+            border-radius: 100%;
+            width: 0.375rem;
+            height: 0.375rem;
+        }
+    }
 }
 
-.c-custom-option__fake-input{
+/* .c-option--hidden:active+.c-custom-option, */
+.c-option--hidden:focus-visible+.c-custom-option {
+    & .c-custom-option__fake-input {
+        border: 1px solid var(--global-input-focus-borderColor);
+        box-shadow: var(--global-input-focus-boxShadow);
+    }
+}
+
+/* 
+    ---
+    * Component: CUSTOM TOGGLE BUTTONS
+    ---
+*/
+
+.c-option--hidden+.c-custom-toggle {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 1rem;
-    height: 1rem;
-    border: var(--global-input-borderWidth) solid var(--global-input-borderColor);
-    margin-right: 0.5rem;
+    gap: .5rem;
+    margin-bottom: .5rem;
+
+    & .c-custom-toggle__fake-input {
+        display: block;
+        width: 3rem;
+        height: 1.5rem;
+        border-radius: 1.5rem;
+        border: 1px solid var(--global-input-borderColor);
+        background-color: var(--global-input-toggle-background);
+        transition: background var(--global-transition-2-ease);
+
+        &::after {
+            content: "";
+            display: block;
+            background-color: var(--global-input-toggle-ballColor);
+            height: 1.375rem;
+            width: 1.375rem;
+            border-radius: 1.5rem;
+            box-shadow: var(--global-input-toggle-ballShadow);
+            transition: transform var(--global-transition-2-ease);
+        }
+    }
 }
 
-.c-custom-option__fake-input--checkbox{
+.c-option--hidden:checked+.c-custom-toggle {
+    & .c-custom-toggle__fake-input {
+        background-color: var(--global-color-primary-500);
+        border-color: var(--global-color-primary-600);
+        &::after {
+            transform: translateX(1.5rem);
+        }
+    }
+}
+
+.c-option--hidden:focus-visible+.c-custom-toggle {
+    & .c-custom-toggle__fake-input {
+        border: 1px solid var(--global-input-focus-borderColor);
+        box-shadow: var(--global-input-focus-boxShadow);
+
+        & .c-custom-option__symbol {}
+    }
+}
+
+/* 
+    * CUSTOM SELECT
+*/
+
+.c-custom-select {
+    border: 1px solid var(--global-input-borderColor);
     border-radius: var(--global-borderRadius);
-}
-
-.c-custom-option__fake-input:hover{
-    border: var(--global-borderWidth) solid var(--global-input-hover-borderColor);
-}
-
-.c-option--hidden:focus-visible + .c-custom-option .c-custom-option__fake-input{
-    box-shadow: var(--global-input-focus-boxShadow);
-}
-
-.c-option--hidden:active + .c-custom-option .c-custom-option__fake-input{
-    box-shadow: var(--global-input-focus-boxShadow);
-}
-    
-.c-custom-option__fake-input--radio{
-    border-radius: 100%;
-}
-
-.c-custom-option__symbol{
-    display: block;
-    opacity: 0;
-    transition: var(--global-input-transition);
-}
-
-.c-custom-option__fake-input--checkbox .c-custom-option__symbol {
-    width: 10px;
-    height: 10px;
-    fill: var(--global-color-primary-500-alpha-75);
-  }
-  
-  .c-custom-option__fake-input--radio .c-custom-option__symbol {
-    width: 6px;
-    height: 6px;
-    fill: var(--global-color-primary-500-alpha-75);
-    background-color: var(--global-color-primary-500);
-    border-radius: 100%;
-  }
-
-.c-option-list{
-    margin-bottom: 1.5rem;
-}
-
-.c-option-list__item{
-    margin-bottom: 12px;
-}
-
-.c-custom-toggle{
     display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.c-custom-toggle__fake-input{
-    display: block;
-    width: 3rem;
-    height: 1.5rem;
-    background-color: var(--global-color-neutral-050);
-    border: var(--global-borderWidth) solid var(--global-input-borderColor);
-    border-radius: 1.5rem;
-}
-
-.c-custom-toggle__fake-input::after{
-    content: "";
-    display: block;
-    width: 1.375rem;
-    height: 1.375rem;
-    background-color: white;
-    border-radius: 100%;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.16);
-    transition: all var(--transition-alpha);
-}
-
-.c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__fake-input::after{
-    transform: translateX(1.5rem);
-}
-
-.c-option--hidden:checked + .c-custom-toggle .c-custom-toggle__fake-input{
-    background-color: var(--global-color-primary-500);
-    border-color: var(--global-color-primary-600);
-    transition: all var(--global-transitionTiming-alpha);
-}
-
-.c-option--hidden:focus-visible + .c-custom-toggle .c-custom-toggle__fake-input{
-    box-shadow: var(--global-input-focus-boxShadow);
-    border-color: var(--global-color-primary-700);
-}
-
-.c-option--hidden:active + .c-custom-toggle .c-custom-toggle__fake-input::after{
-    background-color: var(--global-color-neutral-050);
-    box-shadow: var(--global-input-focus-boxShadow);
-    border-color: var(--global-color-primary-700);
-}
-
-.c-option--hidden:active:checked + .c-custom-toggle .c-custom-toggle__fake-input::after{
-    background-color: var(--global-color-primary-500);
-    box-shadow: var(--global-input-focus-boxShadow);
-    border-color: var(--global-color-primary-700);
-}
-
-.c-custom-toggle-list{
-
-}
-
-.c-custom-select{
-    display: block;
+    justify-content: space-between;
     position: relative;
+
+    & .c-custom-select__input {
+        appearance: none;
+        border: none;
+        width: 100%;
+        outline: none;
+    }
+
+    & .c-custom-select__symbol {
+        width: 1.5rem;
+        fill: var(--global-color-primary-500);
+        position: absolute;
+        right: 0;
+        margin-right: 1rem;
+        margin-top: 0.75rem;
+        pointer-events: none;
+    }
 }
 
-.c-custom-select__symbol{
-    width: 1.5rem;
-    height: 1.5rem;
-    fill: var(--global-color-neutral-300);
-    top: .75rem;
-    right: .75rem;
-    position: absolute;
-    pointer-events: none;
-}
+/* 
+    * CUSTOM PASSWORD
+*/
 
-.c-password-toggle-container{
+.c-password-toggle-container {
     position: relative;
-}
+    & .c-password-toggle {
 
-.c-password-toggle{
-    position: absolute;
-    top: .875rem;
-    right: .875rem;
-}
-
-.c-password-toggle__symbol{
-    width: 1.25rem;
-    height: 1.25rem;
-    fill: var(--global-color-neutral-300);
-    pointer-events: none;
-}
-
-.c-password-toggle__checkbox+.c-password-toggle__label {
-    & .c-password-toggle__symbol--show{
-        display: block;
-    }
-    
-    & .c-password-toggle__symbol--hide{
-        display: none;
-    }
-}
-.c-password-toggle__checkbox:checked+.c-password-toggle__label {
-    & .c-password-toggle__symbol--show{
-        display: none;
-    }
-    
-    & .c-password-toggle__symbol--hide{
-        display: block;
+        & .c-password-toggle__checkbox+.c-password-toggle__label {
+            & .c-password-toggle__symbol {
+                fill: var(--global-toggle-color);
+                max-width: 1.5rem;
+                position: absolute;
+                top: 0.75rem;
+                right: 1rem;
+            }
+            & .c-password-toggle__symbol--show {
+                display: none;
+            }
+            & .c-password-toggle__symbol--hide {
+                display: block;
+            }
+        }
+        & .c-password-toggle__checkbox:checked+.c-password-toggle__label {
+            & .c-password-toggle__symbol--show {
+                display: block;
+            }
+            & .c-password-toggle__symbol--hide {
+                display: none;
+            }
+        }
     }
 }
-
-
 
 
 /*------------------------------------*\
@@ -938,7 +947,6 @@ input::placeholder {
     max-width: none !important;
 }
 
-
 /*
     Utilities: align
     ---
@@ -959,7 +967,7 @@ input::placeholder {
 */
 
 .u-text-sm {
-    font-size: .875rem;
+    font-size: 0.875rem;
 }
 
 /*
@@ -1460,4 +1468,3 @@ input::placeholder {
     .u-6-of-6-bp5 {
         flex-basis: 100% !important;
     }
-}
